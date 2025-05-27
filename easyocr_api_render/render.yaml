@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: easyocr-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -w 1 -b 0.0.0.0:10000 easyocr:app
+    autoDeploy: true
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"
